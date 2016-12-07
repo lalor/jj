@@ -23,6 +23,11 @@ class TestJinja(unittest.TestCase):
         self.assertEqual(len(a), len(items)) # items
         self.assertEqual(soup.body.p.text, content) # content
 
+    def test_extend(self):
+        result = render('index.html')
+        soup = BeautifulSoup(result, 'lxml')
+        self.assertEqual(soup.head.title.text, 'Index - My Webpage')
+        self.assertEqual(soup.body.p.text, 'Welcome on my awesome homepage.')
 
 if __name__ == '__main__':
     unittest.main()
