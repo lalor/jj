@@ -29,5 +29,10 @@ class TestJinja(unittest.TestCase):
         self.assertEqual(soup.head.title.text, 'Index - My Webpage')
         self.assertEqual(soup.body.p.text, 'Welcome on my awesome homepage.')
 
+    def test_macro(self):
+        result = render('hello_macro.html')
+        soup = BeautifulSoup(result, 'lxml')
+        self.assertEqual(soup.p.text.strip(), "Hello world")
+
 if __name__ == '__main__':
     unittest.main()
